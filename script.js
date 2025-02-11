@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Password Input Form Logic
+    // Password Input Logic
     let form = document.getElementById("passwordForm");
     if (form) {
         form.addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form refresh
+            event.preventDefault(); // Prevent page reload
 
             let password = document.getElementById("passwordInput").value.trim().toLowerCase();
 
             if (password === "orji") {
-                // Show pop-up first before redirecting
                 setTimeout(() => {
                     alert("Will you be my Valentine?");
                     window.location.href = "countdown.html"; // Normal flow
@@ -49,9 +48,4 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
         }, 1000);
     }
-
-    // Valentine's Message Page Enhancements
-    let hearts = document.createElement("div");
-    hearts.className = "heart-animation";
-    document.body.appendChild(hearts);
 });
