@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    background: linear-gradient(to bottom, #ffcccc, #ff99cc);
+    font-family: Arial, sans-serif;
+}
+
+.container, .valentine-container {
+    margin-top: 50px;
+}
+
+h1 {
+    color: #ff3366;
+}
+
+button {
+    background-color: #ff3366;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff6699;
+}
+
+.message {
+    font-size: 18px;
+    font-weight: bold;
+}
