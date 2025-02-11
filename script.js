@@ -1,32 +1,52 @@
-// Password Protection
-function checkPassword() {
-    const password = document.getElementById('passwordInput').value;
-    if (password.toLowerCase() === 'orgi') {
-        window.location.href = 'countdown.html';
-    } else {
-        document.getElementById('errorMessage').innerHTML = "Incorrect password. Try again!";
-        document.getElementById('errorMessage').style.color = "red";
+document.addEventListener("DOMContentLoaded", function () {
+    const passwordInput = document.getElementById("passwordInput");
+    const submitButton = document.getElementById("submitButton");
+
+    if (submitButton) {
+        submitButton.addEventListener("click", function () {
+            const enteredPassword = passwordInput.value.trim().toLowerCase();
+
+            if (enteredPassword === "orgi") {
+                // Correct password - Show the Valentine pop-up
+                showValentinePopup();
+            } else if (enteredPassword === "dare") {
+                // Bypass everything and go directly to Valentine message
+                window.location.href = "valentine-message.html";
+            } else {
+                // Incorrect password - Show error message
+                showError();
+            }
+        });
     }
-}
 
-// Countdown Timer
-function updateCountdown() {
-    const targetDate = new Date('February 14, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const difference = targetDate - now;
+    function showValentinePopup() {
+        const popUp = document.createElement("div");
+        popUp.classList.add("popup");
+        popUp.innerHTML = `
+            <div class="popup-content">
+                <p>Will you be my Valentine?</p>
+                <button id="yesButton">Yes</button>
+                <button id="noButton">No</button>
+            </div>
+        `;
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        document.body.appendChild(popUp);
 
-    document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        // Handle Yes/No button clicks
+        document.getElementById("yesButton").addEventListener("click", function () {
+            window.location.href = "countdown.html";
+        });
 
-    if (difference < 0) {
-        document.getElementById('countdown').innerHTML = "Happy Valentine's Day!";
+        document.getElementById("noButton").addEventListener("click", function () {
+            alert("You picked the wrong option!");
+        });
     }
-}
 
-if (document.getElementById('countdown')) {
-    setInterval(updateCountdown, 1000);
-}
+    function showError() {
+        const errorMessage = document.getElementById("error-message");
+        if (errorMessage) {
+            errorMessage.textContent = "Incorrect password. Try again!";
+            errorMessage.style.color = "red";
+        }
+    }
+});
