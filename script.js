@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.addEventListener("click", function () {
             const enteredPassword = passwordInput.value.trim().toLowerCase();
 
-            if (enteredPassword === "orgi") {
+            if (enteredPassword === "Orji") {
                 // Correct password - Show the Valentine pop-up
                 showValentinePopup();
-            } else if (enteredPassword === "dare") {
+            } else if (enteredPassword === "Dare") {
                 // Bypass everything and go directly to Valentine message
                 window.location.href = "valentine-message.html";
             } else {
