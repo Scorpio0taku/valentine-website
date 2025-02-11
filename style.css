@@ -1,91 +1,58 @@
-/* Romantic Background */
+/* Global Styling */
 body {
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
-    font-family: "Dancing Script", cursive; /* Elegant font */
+    font-family: "Dancing Script", cursive;
     text-align: center;
     color: white;
+    margin: 0;
+}
+
+/* Homepage */
+.home-page {
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-/* Centering Content */
 .container {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Input Styling */
-input {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
+.hidden {
+    display: none;
 }
 
-/* Button Styling */
-button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    background: #ff4d6d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #ff1e56;
-}
-/* Countdown Page Styling */
+/* Countdown Page */
 .countdown-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-    color: #fff;
     font-family: 'Orbitron', sans-serif;
-    text-align: center;
 }
 
 .countdown-container {
     background: rgba(255, 255, 255, 0.1);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
 }
 
-#countdown {
+/* Valentine Page */
+.valentine-page {
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    align-items: center;
+    height: 100vh;
 }
 
-.time-box {
-    background: rgba(0, 0, 0, 0.4);
-    padding: 15px;
+.valentine-container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.image-container img {
+    width: 100%;
     border-radius: 10px;
-    min-width: 100px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-}
-
-.time-box span {
-    font-size: 3rem;
-    display: block;
-    font-weight: bold;
-    text-shadow: 0 0 10px cyan;
-}
-
-.time-box p {
-    margin: 0;
-    font-size: 1.2rem;
-    text-transform: uppercase;
 }
