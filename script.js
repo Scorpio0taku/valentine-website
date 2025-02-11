@@ -1,52 +1,69 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const passwordInput = document.getElementById("passwordInput");
-    const submitButton = document.getElementById("submitButton");
+    const passwordForm = document.getElementById("password-form");
+    const passwordInput = document.getElementById("password");
+    
+    if (passwordForm) {
+        passwordForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const enteredPassword = passwordInput.value.trim();
 
-    if (submitButton) {
-        submitButton.addEventListener("click", function () {
-            const enteredPassword = passwordInput.value.trim().toLowerCase();
-
-            if (enteredPassword === "Orji") {
-                // Correct password - Show the Valentine pop-up
+            if (enteredPassword === "Orgi") {
                 showValentinePopup();
             } else if (enteredPassword === "Dare") {
-                // Bypass everything and go directly to Valentine message
-                window.location.href = "valentine-message.html";
+                window.location.href = "valentine.html"; // Bypass everything
             } else {
-                // Incorrect password - Show error message
-                showError();
+                alert("Incorrect password! Try again.");
             }
         });
     }
-
-    function showValentinePopup() {
-        const popUp = document.createElement("div");
-        popUp.classList.add("popup");
-        popUp.innerHTML = `
-            <div class="popup-content">
-                <p>Will you be my Valentine?</p>
-                <button id="yesButton">Yes</button>
-                <button id="noButton">No</button>
-            </div>
-        `;
-
-        document.body.appendChild(popUp);
-
-        // Handle Yes/No button clicks
-        document.getElementById("yesButton").addEventListener("click", function () {
-            window.location.href = "countdown.html";
-        });
-
-        document.getElementById("noButton").addEventListener("click", function () {
-            alert("You picked the wrong option!");
-        });
-    }
-
-    function showError() {
-        const errorMessage = document.getElementById("error-message");
-        if (errorMessage) {
-            errorMessage.textContent = "Incorrect password. Try again!";
-            errorMessage.style.color = "red";
-        }
-    }
 });
+
+function showValentinePopup() {
+    const popup = document.createElement("div");
+    popup.innerHTML = `
+        <div class="popup">
+            <p>Will you be my Valentine?</p>
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    document.getElementById("yes-btn").addEventListener("click", function () {
+        window.location.href = "countdown.html";
+    });
+
+    document.getElementById("no-btn").addEventListener("click", function () {
+        alert("You picked the wrong option!");
+    });
+}
+
+// COUNTDOWN SCRIPT
+if (window.location.pathname.includes("countdown.html")) {
+    const countdownDate = new Date("Feb 14, 2025 00:00:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = countdownDate - now;
+
+        if (timeLeft <= 0) {
+            document.getElementById("countdown").innerHTML = "Happy Valentine's Day!";
+            return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = `
+            <div class="countdown-box"><span>${days}</span> days</div>
+            <div class="countdown-box"><span>${hours}</span> hours</div>
+            <div class="countdown-box"><span>${minutes}</span> minutes</div>
+            <div class="countdown-box"><span>${seconds}</span> seconds</div>
+        `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+}
