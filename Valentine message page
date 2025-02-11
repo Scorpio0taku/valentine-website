@@ -13,9 +13,9 @@
         <p class="message">
             Happy Valentine's Day, Orgi! This is just a message to show you how much I appreciate you and care for you...
         </p>
-        <img src="YOUR_COLLAGE_LINK_HERE" alt="Collage">
+        <img src="https://imgur.com/a/3xRH6Hd" alt="Collage">
         <audio controls autoplay>
-            <source src="YOUR_MUSIC_LINK_HERE" type="audio/mpeg">
+            <source src="https://asset.cloudinary.com/dx7sgtdun/4669d217f9ad2723561094645b6099e2" type="audio/mpeg">
         </audio>
     </div>
 </body>
