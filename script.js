@@ -1,69 +1,57 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const passwordForm = document.getElementById("password-form");
-    const passwordInput = document.getElementById("password");
-    
-    if (passwordForm) {
-        passwordForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const enteredPassword = passwordInput.value.trim();
+    // Password Input Form Logic
+    let form = document.getElementById("passwordForm");
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form refresh
 
-            if (enteredPassword === "Orgi") {
-                showValentinePopup();
-            } else if (enteredPassword === "Dare") {
+            let password = document.getElementById("passwordInput").value.trim().toLowerCase();
+
+            if (password === "orji") {
+                // Show pop-up first before redirecting
+                setTimeout(() => {
+                    alert("Will you be my Valentine?");
+                    window.location.href = "countdown.html"; // Normal flow
+                }, 500);
+            } else if (password === "dare") {
                 window.location.href = "valentine.html"; // Bypass everything
             } else {
                 alert("Incorrect password! Try again.");
             }
         });
     }
-});
 
-function showValentinePopup() {
-    const popup = document.createElement("div");
-    popup.innerHTML = `
-        <div class="popup">
-            <p>Will you be my Valentine?</p>
-            <button id="yes-btn">Yes</button>
-            <button id="no-btn">No</button>
-        </div>
-    `;
-    document.body.appendChild(popup);
+    // Countdown Timer Logic
+    let countdownElement = document.getElementById("countdown");
+    if (countdownElement) {
+        let targetDate = new Date("February 14, 2025 00:00:00").getTime();
 
-    document.getElementById("yes-btn").addEventListener("click", function () {
-        window.location.href = "countdown.html";
-    });
+        let countdownInterval = setInterval(function () {
+            let now = new Date().getTime();
+            let timeLeft = targetDate - now;
 
-    document.getElementById("no-btn").addEventListener("click", function () {
-        alert("You picked the wrong option!");
-    });
-}
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = "Happy Valentine's Day!";
+                return;
+            }
 
-// COUNTDOWN SCRIPT
-if (window.location.pathname.includes("countdown.html")) {
-    const countdownDate = new Date("Feb 14, 2025 00:00:00").getTime();
+            let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const timeLeft = countdownDate - now;
-
-        if (timeLeft <= 0) {
-            document.getElementById("countdown").innerHTML = "Happy Valentine's Day!";
-            return;
-        }
-
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        document.getElementById("countdown").innerHTML = `
-            <div class="countdown-box"><span>${days}</span> days</div>
-            <div class="countdown-box"><span>${hours}</span> hours</div>
-            <div class="countdown-box"><span>${minutes}</span> minutes</div>
-            <div class="countdown-box"><span>${seconds}</span> seconds</div>
-        `;
+            countdownElement.innerHTML = `
+                <span>${days}d</span> : 
+                <span>${hours}h</span> : 
+                <span>${minutes}m</span> : 
+                <span>${seconds}s</span>
+            `;
+        }, 1000);
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-}
+    // Valentine's Message Page Enhancements
+    let hearts = document.createElement("div");
+    hearts.className = "heart-animation";
+    document.body.appendChild(hearts);
+});
