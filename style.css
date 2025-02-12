@@ -44,15 +44,22 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden; /* Prevents full-page scrolling */
 }
 
 .valentine-container {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 15px;
+    width: 80%;
+    max-height: 90vh; /* Limits height to prevent overflow */
+    overflow-y: auto; /* Enables scrolling if content is too long */
 }
 
+/* Ensure the image is well-fitted */
 .image-container img {
     width: 100%;
     border-radius: 10px;
+    max-height: 300px; /* Prevents oversized images */
+    object-fit: cover;
 }
