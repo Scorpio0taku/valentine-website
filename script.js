@@ -7,12 +7,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (submitButton) {
         submitButton.addEventListener("click", function () {
             let password = passwordInput.value.trim().toLowerCase();
+            let currentDate = new Date();
+            let cutoffDate = new Date("February 14, 2025 00:00:00");
+
             console.log("Entered password:", password); // Debugging log
 
             if (password === "orji") { 
-                console.log("Correct password entered!");
-                document.querySelector(".container").classList.add("hidden");
-                valentineQuestion.classList.remove("hidden");
+                if (currentDate >= cutoffDate) {
+                    console.log("It's after February 13th! Redirecting directly to valentine.html");
+                    window.location.href = "valentine.html"; // Redirect straight to final message
+                } else {
+                    console.log("Correct password entered! Showing Valentine question.");
+                    document.querySelector(".container").classList.add("hidden"); // Hide input form
+                    valentineQuestion.classList.remove("hidden"); // Show the Valentine question
+                }
             } else if (password === "dare") {  
                 console.log("Bypass password entered! Redirecting...");
                 window.location.href = "valentine.html";
@@ -28,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (yesButton && noButton) {
         yesButton.addEventListener("click", function () {
+            console.log("User accepted! Redirecting to countdown...");
             window.location.href = "countdown.html";
         });
 
@@ -48,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 countdownElement.innerHTML = "Happy Valentine's Day!";
+                
+                // Store in local storage that countdown is finished
+                localStorage.setItem("countdownFinished", "true");
                 return;
             }
 
