@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let submitButton = document.getElementById("submitButton");
     let valentineQuestion = document.getElementById("valentine-question");
     let errorMessage = document.getElementById("error-message");
-    
+
     if (submitButton) {
         submitButton.addEventListener("click", function () {
             let password = passwordInput.value.trim().toLowerCase();
-            
+
             if (password === "orji") {
                 document.querySelector(".container").classList.add("hidden");
                 valentineQuestion.classList.remove("hidden");
@@ -77,7 +77,7 @@ One plus one equals one.
 
 So once again, thank you.
 
-I love you.`;
+I love you.`; // (Your message remains unchanged)
 
     let messageElement = document.getElementById("valentine-message");
     let index = 0;
