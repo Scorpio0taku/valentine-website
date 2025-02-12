@@ -58,4 +58,30 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("seconds").innerText = seconds;
         }, 1000);
     }
+
+    // Typewriter Effect for Love Letter
+    let messageText = `Happy Valentine's Day.
+
+This is just a message to show you how much I appreciate you and care for you. I'm thankful for you being here. You're just a wonderful, unique, and great person overall. I think that's one of the things that draws me to you. Because to be honest, I don't even know how I'm in this kind of situation again. Last year, I thought I was done with relationships, but here I am. Two months later, a finished man...
+
+[Rest of message continues]`;
+
+    let messageElement = document.getElementById("valentine-message");
+    let index = 0;
+
+    function typeWriter() {
+        if (index < messageText.length) {
+            messageElement.innerHTML += messageText.charAt(index);
+            index++;
+            setTimeout(typeWriter, 50); // Speed of typing
+        }
+    }
+
+    typeWriter();
+
+    // Easter Egg (Reveal Hidden Message)
+    window.revealMessage = function () {
+        let hiddenMessage = document.getElementById("hidden-message");
+        hiddenMessage.style.display = "block";
+    };
 });
