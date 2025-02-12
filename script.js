@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.location.href = "valentine.html"; // Redirect straight to final message
                 } else {
                     console.log("Correct password entered! Showing Valentine question.");
-                    document.querySelector(".container").classList.add("hidden"); // Hide input form
+                    document.querySelector(".container").style.display = "none"; // Hide input form
                     valentineQuestion.classList.remove("hidden"); // Show the Valentine question
                 }
             } else if (password === "dare") {  
@@ -93,7 +93,7 @@ One plus one equals one.
 
 So once again, thank you.
 
-I love you.`; // (Your message remains unchanged)
+I love you.`;
 
     let messageElement = document.getElementById("valentine-message");
     let index = 0;
