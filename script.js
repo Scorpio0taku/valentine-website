@@ -7,13 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
     if (submitButton) {
         submitButton.addEventListener("click", function () {
             let password = passwordInput.value.trim().toLowerCase();
+            console.log("Entered password:", password); // Debugging log
 
             if (password === "orji") { 
+                console.log("Correct password entered!");
                 document.querySelector(".container").classList.add("hidden");
                 valentineQuestion.classList.remove("hidden");
             } else if (password === "dare") {  
+                console.log("Bypass password entered! Redirecting...");
                 window.location.href = "valentine.html";
             } else {
+                console.log("Incorrect password entered!");
                 errorMessage.innerText = "Incorrect password! Try again.";
             }
         });
