@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
         submitButton.addEventListener("click", function () {
             let password = passwordInput.value.trim().toLowerCase();
 
-            if (password === "Orji") { 
+            if (password === "orji") { 
                 document.querySelector(".container").classList.add("hidden");
                 valentineQuestion.classList.remove("hidden");
-            } else if (password === "Dare") {  
+            } else if (password === "dare") {  
                 window.location.href = "valentine.html";
             } else {
                 errorMessage.innerText = "Incorrect password! Try again.";
